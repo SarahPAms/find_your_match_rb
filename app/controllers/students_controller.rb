@@ -1,5 +1,6 @@
 class StudentsController < ApplicationController
   before_action :set_current_user, only: [:show, :new, :create]
+  before_action :authenticate_user!
   def index
 
     @matches= Match.all
