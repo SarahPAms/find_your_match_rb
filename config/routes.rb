@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  root to: "pages#student"
+  root to: "students#index"
+
   devise_for :users
 
-  resources :students
+  resources :students, only:[:index, :show]
   resources :admin
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
