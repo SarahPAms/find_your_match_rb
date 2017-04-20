@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :students, only:[:index, :show]
-  resources :admin
+  resources :admins
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
