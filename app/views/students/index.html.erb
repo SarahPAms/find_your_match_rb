@@ -1,41 +1,32 @@
-
-  <%= @final_draw %>
-  <%= @match_names %>
-  <%= @user_ids %>
-
-
-
-<div class="panel panel-primary">
-  <div class="panel-heading"><h2>Former pairings</h2>
-  </div>
-  <div class="panel-body">
-    <h1> Hello! <%= current_user.name %> </h1>
+<div class="jumbotron text-center">
+  <h1> Hello <%= current_user.name %> !</h1>
+</div>
+<div class='col-md-4'>
+  <ul class='list-group'>
+    <li class='list-group-item justify-content-between active text-center'>
+        Pair history
+    </li>
 
     <% @matches.each do |match| %>
-
       <% if match.date < Date.today && current_user == match.user %>
-      <p>
-        <%= match.user.name %> was paired with <%= match.matched_user%> on <%= match.date.to_date%>
-      </p>
-        <% else %>
-          <p>
 
-          </p>
+    <li class='list-group-item justify-content-between'>
+        You were paired with <%= match.matched_user%> on <%= match.date.to_date%>
+    </li>
       <% end %>
     <% end %>
-    <p> Today's Match: </p>
+  </ul>
+</div>
+
+<div class='col-md-4'>
+  <h3> Today's Match: </h3>
     <% @match.each do |match| %>
       <% if match.date == Date.today && current_user == match.user %>
         <%= match.matched_user %>
-      <% else %>
-        <%= current_user.name %>
       <% end %>
     <% end %>
-
-
-  </div>
 </div>
 
-  <div>
-    <%= link_to "Log out", destroy_user_session_path, method: :delete,  class: " btn btn-default"%>
-  </div>
+<div>
+  <%= link_to "Log out", destroy_user_session_path, method: :delete,  class: " btn btn-default"%>
+</div>
