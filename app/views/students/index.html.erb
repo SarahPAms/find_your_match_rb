@@ -1,0 +1,16 @@
+<div class="panel panel-primary">
+  <div class="panel-heading"><h2>Former pairings</h2>
+  </div>
+  <div class="panel-body">
+
+    <% @matches.each do |match| %>
+      <p>
+        <%= match.user.name %> <%= match.matched_user%> <%= match.date.to_date%>
+      </p>
+    <% end %>
+
+    <% @match.each do |match| %>
+    <p> Today's Match: </p>
+
+      <% match.matched_user %>
+    <% end %>
