@@ -1,60 +1,74 @@
-<div class="panel panel-primary">
-  <div class="panel-heading"><h2>Former pairings</h2> </div>
+<div class="jumbotron">
+  <h1> Admin </h1>
+</div>
 
-    <div class="panel-body">
-      <ul>
+
+<div class='col-md-4'>
+  <ul class='list-group'>
+    <li class='list-group-item justify-content-between active'>
+      <h3>Pairs overview:</h3>
+    </li>
       <% previous_date = nil %>
     <% @matches.each do |match| %>
       <% if match.date.to_date != previous_date %>
-        <li>
+        <li class='list-group-item justify-content-between active'>
           <%= match.date.to_date%>
         </li>
       <%end%>
-        <li>
-           <%= match.user.name %> was paired with <%= match.matched_user%>
+        <li class='list-group-item justify-content-between'>
+          <strong> <%= match.user.name %> </strong>was paired with <strong><%= match.matched_user%></strong>
         </li>
           <% previous_date = match.date.to_date %>
     <% end %>
       </ul>
+</div>
 
-    <p> Today's Matches: </p>
+<div class='col-md-4'>
+  <ul class='list-group'>
+    <li class='list-group-item justify-content-between active'>
+      <h3>Today's Matches:</h3>
+    </li>
 
     <% @matches.each do |match| %>
       <% if match.date == Date.today %>
-        <p>
-          <%= match.matched_user %> and <%= match.user.name %>
-        </p>
-      <% else %>
-        <p>
-
-        </p>
+        <li class='list-group-item justify-content-between'>
+          <strong><%= match.matched_user %></strong> and <strong><%= match.user.name %></strong>
+        </li>
       <% end %>
     <% end %>
-
-    </div>
+  </ul>
 </div>
 
-<div>
-  Class roster:
+<div class='col-md-4'>
+  <ul class='list-group'>
+    <li class='list-group-item justify-content-between active'>
+      <h3>Class roster:</h3>
+    </li>
+
     <% @users.each do | user | %>
-      <p>
+    <li class='list-group-item justify-content-between'>
       <% if user.admin == true %>
         <%= user.name %> is an admin
       <% else %>
         <%= user.name %> is not an admin
       <% end %>
         <%= link_to user.name, admin_path(user.id), class: " btn btn-default" %>
-      </p>
+    </li>
       <% end %>
-
+  </ul>
 </div>
-<div>
-  <% @dates.each do | date | %>
-    <p>
-      <%= link_to date.to_date, admins_path(date: date.to_date), method: :create %>
-    </p>
-    <% end %>
 
+<div class='col-md-4'>
+  <ul class='list-group'>
+    <li class='list-group-item justify-content-between active'>
+      <h3>Dates</h3>
+    </li>
+    <% @dates.each do | date | %>
+    <li class='list-group-item justify-content-between'>
+      <%= link_to date.to_date, admins_path(date: date.to_date), method: :create %>
+    </li>
+    <% end %>
+  </ul>
 </div>
 
 <div>
