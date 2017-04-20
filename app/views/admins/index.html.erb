@@ -1,0 +1,42 @@
+<div class="panel panel-primary">
+  <div class="panel-heading"><h2>Former pairings</h2> </div>
+
+    <div class="panel-body">
+
+    <% @matches.each do |match| %>
+      <p>
+        on <%= match.date.to_date%>: <%= match.user.name %> was paired with <%= match.matched_user%>
+      </p>
+    <% end %>
+
+    <p> Today's Matches: </p>
+
+    <% @matches.each do |match| %>
+      <% if match.date == Date.today %>
+        <p>
+          <%= match.matched_user %> and <%= match.user.name %>
+        </p>
+      <% else %>
+        <p>
+
+        </p>
+      <% end %>
+    <% end %>
+
+    </div>
+</div>
+
+<div>
+  Class roster:
+    <% @users.each do | user | %>
+      <p>
+      <% if user.admin == true %>
+        <%= user.name %> is an admin
+      <% else %>
+        <%= user.name %> is not an admin
+      <% end %>
+        <%= link_to user.name, admin_path(user.id), class: " btn btn-default" %>
+      </p>
+      <% end %>
+
+</div>
