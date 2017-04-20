@@ -1,0 +1,5 @@
+<% @matches.each do |match| %>
+  <p>
+    <%= match.user.name %> <%= match.matched_user%> <%= match.date.to_date%>
+  </p>
+<% end %>
