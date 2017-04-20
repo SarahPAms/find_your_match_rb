@@ -4,13 +4,23 @@
   <div class="panel-body">
 
     <% @matches.each do |match| %>
+      <% if match.date < Date.today %>
       <p>
-        <%= match.user.name %> <%= match.matched_user%> <%= match.date.to_date%>
+        <%= match.user.name %> was paired with <%= match.matched_user%> on <%= match.date.to_date%>
       </p>
+        <% else %>
+          <p>
+          
+          </p>
+      <% end %>
+    <% end %>
+    <p> Today's Match: </p>
+    <% @match.each do |match| %>
+      <% if match.date = Date.today %>
+        <%= match.matched_user %>
+      <% else %>
+        <%= current_user.name %>
+      <% end %>
     <% end %>
 
-    <% @match.each do |match| %>
-    <p> Today's Match: </p>
-  
-      <% match.matched_user %>
-    <% end %>
+  </div>
