@@ -2,12 +2,20 @@
   <div class="panel-heading"><h2>Former pairings</h2> </div>
 
     <div class="panel-body">
-
+      <ul>
+      <% previous_date = nil %>
     <% @matches.each do |match| %>
-      <p>
-        on <%= match.date.to_date%>: <%= match.user.name %> was paired with <%= match.matched_user%>
-      </p>
+      <% if match.date.to_date != previous_date %>
+        <li>
+          <%= match.date.to_date%>
+        </li>
+      <%end%>
+        <li>
+           <%= match.user.name %> was paired with <%= match.matched_user%>
+        </li>
+          <% previous_date = match.date.to_date %>
     <% end %>
+      </ul>
 
     <p> Today's Matches: </p>
 

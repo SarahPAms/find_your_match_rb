@@ -3,7 +3,7 @@ class AdminsController < ApplicationController
   before_action :verify_admin
 
   def index
-    @matches = Match.all
+    @matches = Match.order('date ASC')
     @users = User.all
     @dates = [3.days.from_now, 4.days.from_now, 6.days.from_now, 7.days.from_now, 8.days.from_now, 10.days.from_now]
 
