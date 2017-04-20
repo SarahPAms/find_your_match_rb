@@ -3,6 +3,12 @@ class AdminsController < ApplicationController
   def index
     @matches = Match.all
     @users = User.all
+    @dates = [3.days.from_now, 4.days.from_now, 6.days.from_now, 7.days.from_now, 8.days.from_now, 10.days.from_now]
+
+  end
+
+  def create
+    @monkey = boo_rails
   end
 
   def show
@@ -13,6 +19,7 @@ class AdminsController < ApplicationController
   end
 
   def update
-    @dates = [3.days.from_now, 4.days.from_now, 6.days_from_now, 7.days_from_now, 8.days_from_now]
   end
 end
+    private
+    

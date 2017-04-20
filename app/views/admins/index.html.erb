@@ -40,3 +40,11 @@
       <% end %>
 
 </div>
+<div>
+  <% @dates.each do | date | %>
+    <p>
+      <%= link_to date.to_date, admins_path(date: date.to_date), method: :create %>
+    </p>
+    <% end %>
+
+</div>
