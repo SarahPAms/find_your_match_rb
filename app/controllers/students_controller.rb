@@ -1,5 +1,8 @@
 class StudentsController < ApplicationController
   before_action :set_current_user, only: [:show, :new, :create]
+  before_action :authenticate_user!
+  before_action :verify_student
+
   def index
 
     @matches= Match.all
@@ -37,6 +40,12 @@ class StudentsController < ApplicationController
 
   def show
     @match = @user.matches.find(params[:id])
+  end
+
+  def verify_student
+    if current_user.admin == true
+      redirect_to admins_path
+    end
   end
 
   private

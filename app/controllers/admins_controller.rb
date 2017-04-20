@@ -1,4 +1,6 @@
 class AdminsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :verify_admin
 
   def index
     @matches = Match.all
@@ -8,7 +10,6 @@ class AdminsController < ApplicationController
   end
 
   def create
-    @monkey = boo_rails
   end
 
   def show
@@ -18,7 +19,10 @@ class AdminsController < ApplicationController
     redirect_to admins_path, notice: "User was updated"
   end
 
-  def update
+  def verify_admin
+    if current_user.admin == false
+      redirect_to students_path
+    end
   end
 end
     private
