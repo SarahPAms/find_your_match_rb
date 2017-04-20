@@ -5,7 +5,7 @@ class StudentsController < ApplicationController
     @matches= Match.all
     @match = Match.where(date: Date.today, user: current_user.id)
 
-    if true
+    if @match.count == 0
       @users = User.where.not("id =?", current_user.id)
       @old_matches = Match.where("user_id =? AND date < ?", current_user.id, Date.today)
 
@@ -26,6 +26,7 @@ class StudentsController < ApplicationController
 
 
       inserted_match=Match.create(date: Date.today, user_id: current_user.id, matched_user: selected_user[0])
+      inserted_match=Match.create(date: Date.today, user_id: @random_id, matched_user: current_user.name)
 
 
     else
