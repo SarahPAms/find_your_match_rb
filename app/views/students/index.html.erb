@@ -2,8 +2,10 @@
   <div class="panel-heading"><h2>Former pairings</h2>
   </div>
   <div class="panel-body">
+    <h1> Hello! <%= current_user.name %> </h1>
 
     <% @matches.each do |match| %>
+
       <% if match.date < Date.today && current_user == match.user %>
       <p>
         <%= match.user.name %> was paired with <%= match.matched_user%> on <%= match.date.to_date%>
@@ -16,11 +18,15 @@
     <% end %>
     <p> Today's Match: </p>
     <% @match.each do |match| %>
-      <% if match.date = Date.today %>
+      <% if match.date == Date.today && current_user == match.user %>
         <%= match.matched_user %>
       <% else %>
         <%= current_user.name %>
       <% end %>
     <% end %>
+  </div>
+</div>
 
+  <div>
+    <%= link_to "Log out", destroy_user_session_path, method: :delete,  class: " btn btn-default"%>
   </div>

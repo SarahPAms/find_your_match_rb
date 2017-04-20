@@ -22,4 +22,20 @@ class AdminsController < ApplicationController
   end
 end
     private
-    
+    arr = [1, 2, 3, 4, 5, 6, 7]
+
+
+      if (arr.count % 2) == 1
+        arr.push(nil)
+      end
+
+      arr_copy1 = arr ;
+      arr_copy2 = arr ;
+
+      arr_copy1 = arr_copy1.shuffle
+      arr_copy2 = arr_copy2.shuffle
+
+      while(arr_copy1.count > (arr.count / 2))
+        name1 = arr_copy1.pop
+        name2 = arr_copy2[0] == name1 ? arr_copy2.pop : arr_copy2.shift
+      end
