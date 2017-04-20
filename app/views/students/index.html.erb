@@ -4,9 +4,15 @@
   <div class="panel-body">
 
     <% @matches.each do |match| %>
+      <% if match.date < Date.today %>
       <p>
         <%= match.user.name %> was paired with <%= match.matched_user%> on <%= match.date.to_date%>
       </p>
+        <% else %>
+          <p>
+          
+          </p>
+      <% end %>
     <% end %>
     <p> Today's Match: </p>
     <% @match.each do |match| %>
