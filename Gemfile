@@ -57,3 +57,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise', '~> 4.2'
+gem 'factory_girl_rails', '4.7.0'
+gem 'faker', '1.6.6'

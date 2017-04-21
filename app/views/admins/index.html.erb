@@ -1,4 +1,4 @@
-<div class="jumbotron">
+<div class="jumbotron text-center">
   <h1> Admin </h1>
 </div>
 
@@ -47,12 +47,9 @@
 
     <% @users.each do | user | %>
     <li class='list-group-item justify-content-between'>
-      <% if user.admin == true %>
-        <%= user.name %> is an admin
-      <% else %>
-        <%= user.name %> is not an admin
-      <% end %>
-        <%= link_to user.name, admin_path(user.id), class: " btn btn-default" %>
+      <%= user.name %>
+      <% button_text = !user.admin ? "promote" : "demote" %>
+      <%= link_to button_text, admin_path(user.id), class: " btn btn-danger btn-sm pull-right" %>
     </li>
       <% end %>
   </ul>
